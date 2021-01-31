@@ -1,0 +1,32 @@
+.login-form{
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	height: 100vh;
+}
+
+.card-title{
+	align-items: center;
+	display: flex;
+	justify-content: center;
+}
+
+
+.login-form-content{
+
+	align-items: center;
+	display: flex;
+	justify-content: center;
+
+}
+
+.form-signin-button{
+	align-items: center;
+	display: flex;
+	justify-content: center;
+}
+
+.login-form-card{
+	width: 400px;
+	height: 400px;
+}

@@ -1,0 +1,25 @@
+.feed-home, .feed-about, .feed-profile, .feed-login, .feed-register, .feed-search
+{
+    display: block;
+    text-align: center;
+
+}
+
+.feed-icon-home, .feed-icon-about, .feed-icon-login, .feed-icon-profile, .feed-icon-register, .feed-icon-search
+{
+    text-align: center;
+}
+.elements{
+    position: sticky;
+    height: 65px;
+}
+ 
+
+.active_feed, .active_profile, .active_login, .active_about, .active_register, .active_search{
+    text-decoration: underline; 
+     /* text-underline-position: under !important; */
+
+    /* border: black;
+    border-radius: 1px; */
+}
+
