@@ -1,11 +1,11 @@
-.feed-home, .feed-about, .feed-profile, .feed-login, .feed-register, .feed-search
+.feed-home, .feed-about, .feed-profile, .feed-login, .feed-register, .feed-search, .feed-logout
 {
     display: block;
     text-align: center;
 
 }
 
-.feed-icon-home, .feed-icon-about, .feed-icon-login, .feed-icon-profile, .feed-icon-register, .feed-icon-search
+.feed-icon-home, .feed-icon-about, .feed-icon-login, .feed-icon-profile, .feed-icon-register, .feed-icon-search, .feed-logout
 {
     text-align: center;
 }
@@ -15,7 +15,7 @@
 }
  
 
-.active_feed, .active_profile, .active_login, .active_about, .active_register, .active_search{
+.active_feed, .active_profile, .active_login, .active_about, .active_register, .active_search, .feed-logout{
     text-decoration: underline; 
      /* text-underline-position: under !important; */
 

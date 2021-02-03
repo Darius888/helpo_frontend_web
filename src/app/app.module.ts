@@ -11,6 +11,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon'; 
 import { MatTabsModule } from '@angular/material/tabs'; 
 import { MatTableModule } from '@angular/material/table';
+import { CookieService } from 'ngx-cookie-service';
 
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -30,6 +31,8 @@ import { AboutComponent } from './about/about.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MainComponent } from './main/main.component';
 import { SearchComponent } from './search/search.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 @NgModule({
@@ -40,7 +43,9 @@ import { SearchComponent } from './search/search.component';
     AboutComponent,
     ProfileComponent,
     MainComponent,
-    SearchComponent
+    SearchComponent,
+    PageNotFoundComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
@@ -60,14 +65,9 @@ import { SearchComponent } from './search/search.component';
     ScrollingModule,
     MatTableModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [
-    AppComponent, 
-    LoginComponent,
-    RegisterComponent,
-    AboutComponent,
-    ProfileComponent,
-    MainComponent
+    AppComponent
   ]
 })
 export class AppModule { }

@@ -4,7 +4,6 @@ import { Observable, Subscription } from 'rxjs';
 import { CdkVirtualScrollViewport, ScrollDispatcher } from '@angular/cdk/scrolling';
 import { BehaviorSubject } from 'rxjs';
 import { HelpoJobService } from '../helpo-job.service';
-import { LoginService } from '../login-service';
 import { Fact } from '../shared/models/data';
 import { filter } from 'rxjs/operators';
 import { ViewChild } from '@angular/core';

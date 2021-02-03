@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-about',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  constructor() { }
+  token : string = '';
+
+  constructor(private cookieService: CookieService) { }
 
   ngOnInit(): void {
+    this.token = this.cookieService.get('token');
+    console.log(this.token);
   }
 
 }

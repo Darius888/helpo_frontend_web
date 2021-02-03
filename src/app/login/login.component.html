@@ -15,18 +15,32 @@
           <mat-card-content>
 
 
-            <form>
+            <form class="login-form-inputs" [formGroup]="loginForm" (ngSubmit) = "userLogin()">
 
               <div class="form-email-field">
                 <mat-form-field>
-                  <input matInput type="email" placeholder="Email" [(ngModel)]="userEmail" name="userEmail">
+                  <input matInput name="userEmail" type="email" placeholder="Email" formControlName="userEmail">
+                  <mat-error>
+                    {{ getErrorEmail() }}
+                  </mat-error>
                 </mat-form-field>
               </div>
 
               <div class="form-password-field">
                 <mat-form-field>
-                  <input matInput type='password' placeholder="Password" [(ngModel)]="password" name="password">
+                  <input matInput  name="password" type='password' placeholder="Password" formControlName="password">
+                  <mat-error>
+                    {{ getErrorPassword() }}
+                  </mat-error>
                 </mat-form-field>
+              </div>
+
+              <div class="form-signin-button">
+
+                <mat-card-actions>
+                  <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!loginForm.valid" >Sign In</button>
+                </mat-card-actions>
+      
               </div>
 
             </form>
@@ -34,13 +48,7 @@
 
           </mat-card-content>
         </div>
-        <div class="form-signin-button">
-
-          <mat-card-actions>
-            <button mat-raised-button (click)="userLogin()">Sign In</button>
-          </mat-card-actions>
-
-        </div>
+        
       </div>
 
 

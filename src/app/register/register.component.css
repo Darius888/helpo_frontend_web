@@ -1,4 +1,4 @@
-.login-form{
+.register-form{
 	align-items: center;
 	display: flex;
 	justify-content: center;
@@ -12,7 +12,7 @@
 }
 
 
-.login-form-content{
+.register-form-content{
 
 	align-items: center;
 	display: flex;
@@ -26,7 +26,18 @@
 	justify-content: center;
 }
 
-.login-form-card{
+.register-form-card{
 	width: 400px;
 	height: 400px;
 }
+
+.form-firstname-field, .form-lastname-field, .form-email-field
+{
+	padding-bottom: 10px;
+}
+
+.form-password-field
+{
+	padding-bottom: 20px;
+}
+

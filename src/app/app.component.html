@@ -12,18 +12,6 @@
     </div>
   </a>
 
-  <a mat-tab-link routerLink="/feed" routerLinkActive="active_feed">
-    <div class="home">
-      <mat-icon class="feed-icon-home">home</mat-icon>
-
-      <span class="feed-home">
-        Home
-      </span>
-
-    </div>
-  </a>
-
-
   <a mat-tab-link routerLink="/search" routerLinkActive="active_search">
     <div class="search">
       <mat-icon class="feed-icon-search">search</mat-icon>
@@ -35,7 +23,16 @@
     </div>
   </a>
 
+  <a mat-tab-link routerLink="/feed" routerLinkActive="active_feed">
+    <div class="home">
+      <mat-icon class="feed-icon-home">home</mat-icon>
 
+      <span class="feed-home">
+        Home
+      </span>
+
+    </div>
+  </a>
 
   <a mat-tab-link routerLink="/profile" routerLinkActive="active_profile" *ngIf="condition">
     <div class="profile">
@@ -66,6 +63,17 @@
 
       <span class="feed-register">
         Register
+      </span>
+
+    </div>
+  </a>
+
+
+  <a mat-tab-link routerLink="/logout" routerLinkActive="active_logout" *ngIf="condition">
+    <div class="logout">
+      <mat-icon class="feed-icon-logout">logout</mat-icon>
+      <span class="feed-logout">
+        Logout
       </span>
 
     </div>

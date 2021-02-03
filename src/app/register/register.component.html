@@ -1,6 +1,6 @@
-<div class="login-form">
+<div class="register-form">
 
-    <mat-card class="login-form-card">
+    <mat-card class="register-form-card">
 
         <div class="card-title">
 
@@ -11,34 +11,54 @@
         </div>
 
         <div class="card-content">
-            <div class="login-form-content">
+            <div class="register-form-content">
                 <mat-card-content>
 
 
-                    <form>
+                    <form class="register-form-inputs" [formGroup]="registerForm" (ngSubmit) = "userRegister()">
 
                         <div class="form-firstname-field">
                             <mat-form-field>
-                                <input matInput type="text" placeholder="First name">
+                                <input matInput type="text" placeholder="First name"  name="firstName" formControlName="firstName">
+                                <mat-error>
+                                    {{ getErrorFirstName() }}
+                                  </mat-error>
                             </mat-form-field>
                         </div>
 
                         <div class="form-lastname-field">
                             <mat-form-field>
-                                <input matInput type="text" placeholder="Last name">
+                                <input matInput type="text" placeholder="Last name" name="lastName" formControlName="lastName">
+                                <mat-error>
+                                    {{ getErrorLastName() }}
+                                  </mat-error>
                             </mat-form-field>
                         </div>
 
                         <div class="form-email-field">
                             <mat-form-field>
-                                <input matInput type="email" placeholder="Email">
+                                <input matInput type="email" placeholder="Email" name="email" formControlName="email">
+                                <mat-error>
+                                    {{ getErrorEmail() }}
+                                  </mat-error>
                             </mat-form-field>
                         </div>
 
                         <div class="form-password-field">
                             <mat-form-field>
-                                <input matInput type='password' placeholder="Password">
+                                <input matInput type='password' placeholder="Password" name="password" formControlName="password">
+                                <mat-error>
+                                    {{ getErrorPassword() }}
+                                  </mat-error>
                             </mat-form-field>
+                        </div>
+
+                        <div class="form-signin-button">
+
+                            <mat-card-actions>
+                                <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!registerForm.valid" > Register </button>
+                            </mat-card-actions>
+            
                         </div>
 
                     </form>
@@ -46,13 +66,7 @@
 
                 </mat-card-content>
             </div>
-            <div class="form-signin-button">
-
-                <mat-card-actions>
-                    <button mat-raised-button> Register </button>
-                </mat-card-actions>
-
-            </div>
+          
         </div>
 
 
