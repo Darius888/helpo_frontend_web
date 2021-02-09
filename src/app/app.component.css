@@ -2,21 +2,26 @@
 {
     display: block;
     text-align: center;
+    overflow: hidden;
 
 }
 
 .feed-icon-home, .feed-icon-about, .feed-icon-login, .feed-icon-profile, .feed-icon-register, .feed-icon-search, .feed-logout
 {
     text-align: center;
+    overflow: hidden;
 }
 .elements{
     position: sticky;
     height: 65px;
+    overflow: hidden;
+   
 }
  
 
 .active_feed, .active_profile, .active_login, .active_about, .active_register, .active_search, .feed-logout{
     text-decoration: underline; 
+    overflow: hidden;
      /* text-underline-position: under !important; */
 
     /* border: black;

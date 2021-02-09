@@ -46,7 +46,7 @@
 
   </a>
 
-  <a mat-tab-link routerLink="/login" routerLinkActive="active_login" *ngIf="condition">
+  <a mat-tab-link routerLink="/login" routerLinkActive="active_login" *ngIf="!condition">
     <div class="login">
       <mat-icon class="feed-icon-login">login</mat-icon>
       <span class="feed-login">
@@ -57,7 +57,7 @@
   </a>
 
 
-  <a mat-tab-link routerLink="/register" routerLinkActive="active_register" *ngIf="condition">
+  <a mat-tab-link routerLink="/register" routerLinkActive="active_register" *ngIf="!condition">
     <div class="register">
       <mat-icon class="feed-icon-register">person</mat-icon>
 

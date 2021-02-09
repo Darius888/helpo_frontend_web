@@ -9,6 +9,8 @@ import { AboutComponent } from './about/about.component';
 import { SearchComponent } from './search/search.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LogoutComponent } from './logout/logout.component';
+import { AppAuthGuardService } from './app-auth-guard.service';
+import { AddHelpoJobDialogComponent } from './add-helpo-job-dialog/add-helpo-job-dialog.component';
 
 const routes: Routes = [
   { path: 'app', component: AppComponent },
@@ -17,8 +19,9 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'search', component: SearchComponent },
+  { path: 'search', component: SearchComponent, canActivate:[AppAuthGuardService]},
   { path: 'logout', component: LogoutComponent },
+  { path: 'add', component: AddHelpoJobDialogComponent ,canActivate:[AppAuthGuardService]},
   // { path: '404', component: PageNotFoundComponent },
   // { path: '**', redirectTo: '404' },
   { path: '',   redirectTo: 'feed', pathMatch: 'full'}

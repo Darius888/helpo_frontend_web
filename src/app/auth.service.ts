@@ -18,7 +18,7 @@ export class AuthService {
     this.headers = new HttpHeaders({
       "Content-Type": "application/json",
       "Access-Control-Allow-Credentials": "true",
-      "Set-Cookie": "aaa"
+      "Set-Cookie": this.cookieService.get('token')
   });
   }
 
@@ -35,6 +35,11 @@ export class AuthService {
   validateEmail(email: ValidateEmail)
   {
     return this.http.post<ValidateEmail>(this.authenticationUrl + "/validateEmail", email);   
+  }
+
+  logoutUser()
+  {
+    return this.http.post(this.authenticationUrl + "/logout",null,{headers: this.headers, withCredentials: true});
   }
 
   //TO-DO

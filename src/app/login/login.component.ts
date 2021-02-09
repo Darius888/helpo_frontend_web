@@ -1,15 +1,16 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from "@angular/router"
 // import { ServerResponse } from 'http';
 import { CookieService } from 'ngx-cookie-service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { AuthService } from '../auth.service';
 import { LoginResponse } from '../shared/models/login-response.model';
 import { User } from '../shared/models/login.model';
+import { StateService } from '../state.service';
 
 @Component({
   selector: 'app-login',
@@ -18,21 +19,24 @@ import { User } from '../shared/models/login.model';
 })
 export class LoginComponent implements OnInit {
 
+
+  
+  isLoggedIn = false;
+
   loginForm : FormGroup | any;
   existingUser : User | any;
   // private headers: HttpHeaders;
   token : string = '';
+  subscription: Subscription = new Subscription;
 
-  constructor(private loginService:AuthService, private router: Router, private fb: FormBuilder, private http: HttpClient, private cookieService: CookieService)
+  constructor(private loginService:AuthService, 
+    private router: Router, private fb: FormBuilder, private http: HttpClient, 
+    private cookieService: CookieService, private loginStateService: StateService)
   {
     this.existingUser = new User();
-    this.cookieService.set('token','aaaa');
-    this.token = this.cookieService.get('token');
-    console.log(this.token);
   }
 
   ngOnInit(): void {
-
     this.reactiveLoginForm();
   }
 
@@ -73,11 +77,16 @@ export class LoginComponent implements OnInit {
     this.existingUser.password = this.loginForm.value.password;
     this.loginService.login(this.existingUser).pipe(
       map((data: any) => {
-        // let result = <ServerResponse> data;
         console.log(data);
-        // console.log(data.headers.get('Cookies'));
         if(data.response === "Login successfull")
         {
+          
+          this.isLoggedIn = true;
+
+          this.loginStateService.loggedInCheck(this.isLoggedIn);
+
+          // localStorage.setItem("loggedIn", String(this.isLoggedIn));
+
           this.router.navigate(['/feed']);
         } else {
           

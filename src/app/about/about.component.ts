@@ -8,13 +8,11 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class AboutComponent implements OnInit {
 
-  token : string = '';
 
   constructor(private cookieService: CookieService) { }
 
   ngOnInit(): void {
-    this.token = this.cookieService.get('token');
-    console.log(this.token);
+  
   }
 
 }

@@ -7,6 +7,7 @@ import { catchError, debounceTime, map, take } from 'rxjs/operators';
 import { AuthService } from '../auth.service';
 import { ValidateEmail } from '../shared/models/register-validate-email.model';
 import { NewUser } from '../shared/models/register.model';
+import { StateService } from '../state.service';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +20,7 @@ export class RegisterComponent implements OnInit {
   newUser: NewUser | any;
   validateEmail: ValidateEmail | any;
 
-  constructor(private registerService: AuthService, private fb: FormBuilder, private router: Router) {
+  constructor(private registerService: AuthService, private fb: FormBuilder, private router: Router, private stateService: StateService) {
     this.newUser = new NewUser();
     this.validateEmail = new ValidateEmail();
   }
@@ -91,7 +92,7 @@ export class RegisterComponent implements OnInit {
     this.registerService.register(this.newUser).pipe(
       map((data: any) => {
         if (data.response !== "User with such email already exists") {
-          this.router.navigate(['/feed']);
+          this.router.navigate(['/login']);
         } else {
 
         }
@@ -102,5 +103,4 @@ export class RegisterComponent implements OnInit {
 
     console.log();
   }
-
 }

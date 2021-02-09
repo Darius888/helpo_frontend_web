@@ -1,37 +1,93 @@
 <div class="scroll-view">
-    <cdk-virtual-scroll-viewport itemSize="800" 
-    class="fact-scroll-viewport">
-        <li *cdkVirtualFor="let fact of dataSource">
 
-            <div *ngIf="fact" class="fact-item">
-               
+  <div class="add-new-post-div">
 
-                <mat-card class="example-card">
-                    <mat-card-header>
-                      <div mat-card-avatar class="example-header-image"></div>
-                      <mat-card-title>{{ fact.year }}</mat-card-title>
-                      <mat-card-subtitle>{{ fact.text }}</mat-card-subtitle>
-                    </mat-card-header>
-                    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-                    <mat-card-content>
-                      <p>
-                        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-                        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-                        bred for hunting.
-                      </p>
-                    </mat-card-content>
-                    <mat-card-actions>
-                      <button mat-button>LIKE</button>
-                      <button mat-button>SHARE</button>
-                    </mat-card-actions>
-                  </mat-card>
-                  
+    <button class="extended-fab-button" (click) = "openDialogForAddingNewJob()" mat-fab color="accent">
+      <!-- <mat-icon class="fab-button-icon">speaker_notes</mat-icon> -->
+      <span class="extended-fab-button__text">Add a new help request</span>
+    </button>
+
+  </div>
+  <cdk-virtual-scroll-viewport itemSize="400" class="fact-scroll-viewport">
+    <li *cdkVirtualFor="let fact of userTestStatus">
+
+      <div *ngIf="fact" class="fact-item">
+
+
+        <mat-card class="example-card" >
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+          
+            <mat-card-title>{{(fact.jobTitle | slice:0:10 ) + (fact.jobTitle.length > 10 ? '...' : '')}} </mat-card-title>
+           
+            <mat-card-subtitle>Post upload date: {{ fact.jobPostDate }}. Reward: {{fact.jobReward }} </mat-card-subtitle>
+
+          </mat-card-header>
+          
+            <mat-carousel
+            timings="250ms ease-in"
+            [autoplay]="false"
+            style="cursor:pointer"
+            color="accent"
+            maxWidth="auto"
+            [loop]="true"
+            [hideArrows]="fact.jobPhotoList.length === 1"
+            [hideIndicators]="fact.jobPhotoList.length === 1"
+            [useKeyboard]="true"
+            [useMouseWheel]="false"
+            orientation="ltr"
+          >
+            <mat-carousel-slide
+              #matCarouselSlide
+              *ngFor="let imgSrc of fact.jobPhotoList; let i = index"
+            
+              [image]="imgSrc"
+              overlayColor="#00000040"
+              [hideOverlay]="false"
+            ></mat-carousel-slide>
+          </mat-carousel>
+          <!-- <img mat-card-image src={{imgSrc}} alt="Photo of a Shiba Inu"> -->
         
-            </div>
-            <div *ngIf="!fact">
-                Loading ...
-            </div>
+          <mat-card-content>
+            <p>
+              {{(fact.jobDescription | slice:0:200 ) + (fact.jobDescription.length > 200 ? '...' : '')}}
+            </p>
+          </mat-card-content>
 
-        </li>
-    </cdk-virtual-scroll-viewport>
+          <mat-card-actions fxLayout="row">
+
+            <button mat-raised-button color="basic" (click)="openDialog(fact)">
+              See full post
+            </button>
+            <button mat-raised-button color="primary">
+              Help!
+            </button>
+
+            <div fxFlex></div>
+
+            <button mat-raised-button class="share" >
+              <mat-icon>share</mat-icon>
+              Share
+            </button>
+
+            <button mat-raised-button class="favorite">
+              <mat-icon *ngIf="fact.jobFavoredStatus === 'false'">favorite_border</mat-icon>
+              <mat-icon *ngIf="fact.jobFavoredStatus === 'true'">favorite</mat-icon>
+              Remember
+            </button>
+
+          </mat-card-actions>
+        </mat-card>
+
+
+      </div>
+
+      <!-- <mat-divider class="mat-divider"></mat-divider> -->
+
+      <div *ngIf="!fact">
+        Loading ...
+      </div>
+
+    </li>
+  </cdk-virtual-scroll-viewport>
 </div>
